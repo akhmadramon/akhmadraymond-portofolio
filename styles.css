@@ -167,12 +167,13 @@ h1 {
   background: #fff;
   box-shadow: 0 12px 24px rgba(24, 25, 27, 0.08);
   transform-origin: left center;
+  will-change: width, padding, border-radius, box-shadow;
   transition:
-    width 460ms var(--ease-soft),
+    width 620ms cubic-bezier(0.2, 0.8, 0.18, 1),
     border-color 320ms ease,
-    box-shadow 360ms ease,
-    padding 460ms var(--ease-soft),
-    border-radius 460ms var(--ease-soft);
+    box-shadow 460ms ease,
+    padding 620ms cubic-bezier(0.2, 0.8, 0.18, 1),
+    border-radius 620ms cubic-bezier(0.2, 0.8, 0.18, 1);
 }
 
 .resume-button {
@@ -195,7 +196,7 @@ h1 {
 }
 
 .resume-label {
-  left: 22px;
+  left: 30px;
 }
 
 .resume-extra {
@@ -222,38 +223,42 @@ h1 {
 
 .icon-button {
   width: 56px;
+  padding: 0;
   overflow: hidden;
   border-radius: 50%;
 }
 
 .icon-button:hover,
 .icon-button:focus-visible {
-  width: 144px;
+  width: var(--open-width, 206px);
   border-radius: 999px;
   border-color: rgba(24, 25, 27, 0.28);
   box-shadow: 0 18px 32px rgba(24, 25, 27, 0.13);
 }
 
-.icon-button span {
+.icon-button > span {
   position: absolute;
   left: 52px;
   top: 50%;
-  transform: translateY(-50%);
+  display: block;
   max-width: 0;
   opacity: 0;
   overflow: hidden;
+  transform: translate(8px, -50%);
   font-size: 15px;
   font-weight: 800;
   white-space: nowrap;
   transition:
-    max-width 440ms var(--ease-soft),
-    opacity 260ms ease;
+    max-width 560ms cubic-bezier(0.2, 0.8, 0.18, 1),
+    opacity 360ms ease 90ms,
+    transform 560ms cubic-bezier(0.2, 0.8, 0.18, 1);
 }
 
-.icon-button:hover span,
-.icon-button:focus-visible span {
-  max-width: 80px;
+.icon-button:hover > span,
+.icon-button:focus-visible > span {
+  max-width: calc(var(--open-width, 206px) - 76px);
   opacity: 1;
+  transform: translate(0, -50%);
 }
 
 svg {
@@ -276,7 +281,7 @@ svg {
 }
 
 .resume-button svg {
-  left: 122px;
+  left: 108px;
   transition: left 460ms var(--ease-soft);
 }
 
@@ -318,6 +323,19 @@ svg {
   object-fit: cover;
 }
 
+.polaroid figcaption {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 17px;
+  color: rgba(24, 25, 27, 0.5);
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+}
+
 .main-photo {
   inset: 6% 2% 0 5%;
   z-index: 3;
@@ -356,6 +374,299 @@ svg {
   transform: translate(16%, -7%) rotate(8.5deg);
 }
 
+.profile-section {
+  width: min(100%, 1320px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(330px, 0.86fr) minmax(360px, 0.88fr);
+  align-items: start;
+  gap: clamp(38px, 5vw, 78px);
+  padding: clamp(54px, 7vw, 88px) clamp(34px, 8vw, 120px) clamp(74px, 9vw, 118px);
+}
+
+.ios-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 550px;
+  border: 1px solid rgba(24, 25, 27, 0.08);
+  border-radius: 34px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 28px 70px rgba(24, 25, 27, 0.08);
+  transition:
+    transform 620ms var(--ease-soft),
+    box-shadow 620ms var(--ease-soft),
+    border-color 420ms ease;
+}
+
+.about-card {
+  padding: 38px 46px 42px;
+  transform: rotate(-1.5deg);
+}
+
+.experience-card {
+  padding: 38px 48px 42px;
+  transform: rotate(1.35deg);
+}
+
+.about-card:hover,
+.about-card:focus-within,
+.experience-card:hover,
+.experience-card:focus-within {
+  transform: rotate(0deg) translateY(-4px);
+  border-color: rgba(24, 25, 27, 0.12);
+  box-shadow: 0 34px 80px rgba(24, 25, 27, 0.1);
+}
+
+.ios-bar {
+  position: relative;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.ios-bar .window-dots {
+  left: 0;
+}
+
+.done-button {
+  color: #f0b400;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.message-time {
+  margin-top: 22px;
+  color: rgba(24, 25, 27, 0.34);
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.ios-card h2 {
+  margin: 8px 0 0;
+  color: #111215;
+  font-size: clamp(32px, 2.7vw, 46px);
+  line-height: 1.04;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.about-card h2 {
+  text-align: center;
+}
+
+.about-copy {
+  margin-top: 38px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(24, 25, 27, 0.035);
+}
+
+.about-copy p {
+  margin: 0 0 22px;
+  color: rgba(24, 25, 27, 0.76);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.about-copy p:last-child {
+  margin: 38px 0 0;
+}
+
+.about-copy strong {
+  color: #242528;
+  font-weight: 800;
+}
+
+.about-copy em {
+  color: rgba(24, 25, 27, 0.58);
+}
+
+.tech-panel {
+  margin-top: 32px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(24, 25, 27, 0.055);
+}
+
+.tech-panel p {
+  margin: 0 0 18px;
+  color: rgba(24, 25, 27, 0.22);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.tech-marquee {
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.tech-marquee + .tech-marquee {
+  margin-top: 18px;
+}
+
+.tech-track {
+  display: flex;
+  width: max-content;
+  gap: 30px;
+  will-change: transform;
+}
+
+.tech-track.to-left {
+  animation: techScrollLeft 22s linear infinite;
+}
+
+.tech-track.to-right {
+  animation: techScrollRight 24s linear infinite;
+}
+
+.tech-logo {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 10px 20px rgba(24, 25, 27, 0.08);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.tech-logo.html {
+  color: #f05a28;
+}
+
+.tech-logo.css {
+  color: #226de8;
+}
+
+.tech-logo.react {
+  color: #1fb7e8;
+}
+
+.tech-logo.next {
+  color: #fff;
+  background: #090a0c;
+}
+
+.tech-logo.js {
+  color: #18191b;
+  background: #f7df1e;
+  font-size: 18px;
+}
+
+.tech-logo.ts {
+  color: #fff;
+  background: #3178c6;
+  font-size: 16px;
+}
+
+.tech-logo.node {
+  color: #6cc24a;
+}
+
+.tech-logo.tailwind {
+  color: #22b8cf;
+}
+
+.tech-logo.postgres {
+  color: #336791;
+}
+
+.tech-logo.figma {
+  color: #f24e1e;
+}
+
+.tech-logo.ai {
+  color: #ff9a00;
+  background: #331b00;
+  font-size: 18px;
+}
+
+.tech-logo.ps {
+  color: #31a8ff;
+  background: #001e36;
+  font-size: 18px;
+}
+
+.experience-bar {
+  justify-content: space-between;
+}
+
+.experience-bar svg {
+  width: 22px;
+  height: 22px;
+  color: #f0b400;
+  stroke-width: 2.2;
+}
+
+.experience-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.experience-card h2 {
+  margin-top: 36px;
+}
+
+.experience-list {
+  margin-top: 28px;
+}
+
+.experience-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 22px;
+  padding: 0 0 24px;
+  border-bottom: 1px solid rgba(24, 25, 27, 0.06);
+}
+
+.experience-item + .experience-item {
+  padding-top: 22px;
+}
+
+.experience-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.experience-item h3 {
+  margin: 0;
+  color: #111215;
+  font-size: 17px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.experience-item time {
+  padding-top: 2px;
+  color: rgba(24, 25, 27, 0.38);
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.experience-item .role {
+  grid-column: 1 / -1;
+  margin: 8px 0 0;
+  color: rgba(24, 25, 27, 0.68);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.experience-item > p:not(.role) {
+  grid-column: 1 / -1;
+  margin: 13px 0 0;
+  color: rgba(24, 25, 27, 0.55);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
 @keyframes blink {
   50% {
     opacity: 0;
@@ -386,6 +697,26 @@ svg {
   }
 }
 
+@keyframes techScrollLeft {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes techScrollRight {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -406,31 +737,38 @@ svg {
     width: 100%;
     min-height: 100svh;
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 28px;
     align-content: start;
     justify-items: center;
-    padding: 34px 18px 44px;
+    padding: 40px 18px 54px;
     background: var(--page);
     overflow-x: hidden;
   }
 
   .photo-stack {
     order: 1;
-    width: min(66vw, 230px);
-    margin-bottom: 10px;
+    width: min(72vw, 260px);
+    margin-bottom: 18px;
     filter: drop-shadow(0 24px 32px rgba(24, 25, 27, 0.12));
   }
 
   .polaroid {
-    padding: 12px 12px 34px;
+    padding: 13px 13px 38px;
+  }
+
+  .polaroid figcaption {
+    left: 13px;
+    right: 13px;
+    bottom: 13px;
+    font-size: 9.2px;
   }
 
   .back-left {
-    transform: translateX(-9%) rotate(-7deg);
+    transform: translateX(-13%) rotate(-8deg);
   }
 
   .back-right {
-    transform: translate(9%, -5%) rotate(6deg);
+    transform: translate(13%, -7%) rotate(7deg);
   }
 
   .photo-stack:hover .main-photo,
@@ -483,9 +821,12 @@ svg {
   }
 
   .social-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 48px);
     width: 100%;
     justify-content: center;
     gap: 10px;
+    row-gap: 12px;
     margin-top: 24px;
     padding-left: 0;
   }
@@ -496,13 +837,15 @@ svg {
   }
 
   .resume-button {
+    grid-column: 1 / -1;
+    justify-self: center;
     width: 126px;
     padding: 0 14px;
     font-size: 15px;
   }
 
   .resume-label {
-    left: 18px;
+    left: 22px;
   }
 
   .resume-extra {
@@ -510,7 +853,7 @@ svg {
   }
 
   .resume-button svg {
-    left: 92px;
+    left: 82px;
   }
 
   .icon-button svg {
@@ -527,7 +870,7 @@ svg {
 
   .resume-button:hover svg,
   .resume-button:focus-visible svg {
-    left: 92px;
+    left: 82px;
   }
 
   .resume-button:hover .resume-extra,
@@ -538,6 +881,7 @@ svg {
 
   .icon-button {
     width: 48px;
+    padding: 0;
   }
 
   .icon-button:hover,
@@ -551,30 +895,171 @@ svg {
     box-shadow: 0 12px 24px rgba(24, 25, 27, 0.08);
   }
 
-  .icon-button:hover span,
-  .icon-button:focus-visible span {
+  .icon-button:hover > span,
+  .icon-button:focus-visible > span {
     max-width: 0;
     opacity: 0;
+    transform: translate(8px, -50%);
   }
 
   svg {
     width: 20px;
     height: 20px;
   }
+
+  .profile-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 40px 18px 62px;
+  }
+
+  .ios-card {
+    width: min(100%, 326px);
+    min-height: auto;
+    margin: 0 auto;
+    border-radius: 28px;
+    transform: none;
+  }
+
+  .experience-card {
+    order: 2;
+    padding: 32px 24px 36px;
+  }
+
+  .about-card {
+    order: 1;
+    padding: 32px 24px 36px;
+  }
+
+  .about-card:hover,
+  .about-card:focus-within,
+  .experience-card:hover,
+  .experience-card:focus-within {
+    transform: none;
+  }
+
+  .done-button {
+    font-size: 16px;
+  }
+
+  .message-time {
+    margin-top: 22px;
+    font-size: 12.5px;
+  }
+
+  .ios-card h2 {
+    font-size: 30px;
+    line-height: 1.08;
+  }
+
+  .experience-card h2 {
+    margin-top: 34px;
+  }
+
+  .about-card h2 {
+    font-size: 25px;
+  }
+
+  .about-copy {
+    margin-top: 28px;
+    padding-top: 24px;
+  }
+
+  .about-copy p {
+    margin-bottom: 18px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .about-copy p:last-child {
+    margin-top: 28px;
+  }
+
+  .tech-panel {
+    margin-top: 34px;
+    padding-top: 28px;
+  }
+
+  .tech-panel p {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .tech-track {
+    gap: 22px;
+  }
+
+  .tech-logo {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 10px;
+  }
+
+  .experience-list {
+    margin-top: 28px;
+  }
+
+  .experience-item {
+    column-gap: 14px;
+    padding-bottom: 24px;
+  }
+
+  .experience-item + .experience-item {
+    padding-top: 24px;
+  }
+
+  .experience-item h3 {
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  .experience-item time {
+    max-width: 82px;
+    font-size: 12px;
+    line-height: 1.45;
+    white-space: normal;
+    text-align: right;
+  }
+
+  .experience-item .role {
+    margin-top: 8px;
+    font-size: 14.5px;
+  }
+
+  .experience-item > p:not(.role) {
+    margin-top: 12px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
 }
 
 @media (max-width: 390px) {
   .hero {
-    padding: 28px 12px 38px;
+    gap: 24px;
+    padding: 34px 12px 46px;
   }
 
   .photo-stack {
-    width: min(62vw, 210px);
-    margin-bottom: 6px;
+    width: min(70vw, 230px);
+    margin-bottom: 14px;
+  }
+
+  .polaroid {
+    padding: 12px 12px 36px;
+  }
+
+  .polaroid figcaption {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    font-size: 8.2px;
   }
 
   h1 {
-    margin-bottom: 18px;
+    margin-bottom: 22px;
     font-size: clamp(28px, 8.4vw, 32px);
   }
 
@@ -589,8 +1074,10 @@ svg {
   }
 
   .social-actions {
+    grid-template-columns: repeat(4, 46px);
     gap: 8px;
-    margin-top: 22px;
+    row-gap: 12px;
+    margin-top: 28px;
   }
 
   .resume-button {
@@ -601,11 +1088,12 @@ svg {
   .resume-button svg,
   .resume-button:hover svg,
   .resume-button:focus-visible svg {
-    left: 86px;
+    left: 78px;
   }
 
   .icon-button {
     width: 46px;
+    padding: 0;
   }
 
   .icon-button svg {
@@ -620,6 +1108,52 @@ svg {
   .icon-button:hover,
   .icon-button:focus-visible {
     width: 46px;
+  }
+
+  .profile-section {
+    gap: 20px;
+    padding: 38px 14px 58px;
+  }
+
+  .ios-card {
+    width: min(100%, 320px);
+    border-radius: 26px;
+  }
+
+  .experience-card,
+  .about-card {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .ios-card h2 {
+    font-size: 29px;
+  }
+
+  .about-card h2 {
+    font-size: 24px;
+  }
+
+  .about-copy p,
+  .experience-item > p:not(.role) {
+    font-size: 13.5px;
+  }
+
+  .experience-item h3 {
+    font-size: 15.5px;
+  }
+
+  .experience-item .role {
+    font-size: 14px;
+  }
+
+  .experience-item time {
+    max-width: 76px;
+    font-size: 11.5px;
+  }
+
+  .tech-track {
+    gap: 20px;
   }
 }
 
@@ -639,7 +1173,7 @@ svg {
 
   .resume-button:hover svg,
   .resume-button:focus-visible svg {
-    left: 92px;
+    left: 82px;
   }
 
   .resume-button:hover .resume-extra,
@@ -659,10 +1193,11 @@ svg {
     box-shadow: 0 12px 24px rgba(24, 25, 27, 0.08);
   }
 
-  .icon-button:hover span,
-  .icon-button:focus-visible span {
+  .icon-button:hover > span,
+  .icon-button:focus-visible > span {
     max-width: 0;
     opacity: 0;
+    transform: translate(8px, -50%);
   }
 
   .photo-stack:hover .main-photo,
@@ -681,6 +1216,6 @@ svg {
 
   .resume-button:hover svg,
   .resume-button:focus-visible svg {
-    left: 86px;
+    left: 78px;
   }
 }
