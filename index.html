@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Akhmad Raymond | Portfolio</title>
+    <link rel="icon" type="image/png" href="Assets/aR.png" />
+    <link rel="apple-touch-icon" href="Assets/aR.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="hero" aria-label="Akhmad Raymond portfolio introduction">
+      <section class="hero-copy">
+        <h1>Hi, I'm Akhmad<br />Raymond</h1>
+
+        <div class="terminal-card" aria-label="Current role">
+          <div class="terminal-topbar">
+            <div class="window-dots" aria-hidden="true">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <p>Role - zsh</p>
+          </div>
+          <div class="terminal-body">
+            <p><span class="prompt">~ $</span> role</p>
+            <p class="typed-line"><span id="roleText"></span><span class="caret"></span></p>
+          </div>
+        </div>
+
+        <nav class="social-actions" aria-label="Portfolio links">
+          <a class="resume-button" href="#" download>
+            <span class="resume-label">Resume</span>
+            <span class="resume-extra" aria-hidden="true">Download</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3v11m0 0 4-4m-4 4-4-4" />
+              <path d="M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2" />
+            </svg>
+          </a>
+
+          <a class="icon-button" href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="4" />
+              <path d="M8 10v7" />
+              <path d="M8 7v.01" />
+              <path d="M12 17v-7" />
+              <path d="M12 13.2c0-2.1 4-2.4 4 1.1V17" />
+            </svg>
+            <span>@akhmad</span>
+          </a>
+
+          <a class="icon-button" href="#" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15 22v-3.4a3 3 0 0 0-.8-2.4c2.8-.3 5.8-1.4 5.8-6.3a4.9 4.9 0 0 0-1.3-3.4 4.5 4.5 0 0 0-.1-3.3s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.4 0C6.4 2.9 5.4 3.2 5.4 3.2a4.5 4.5 0 0 0-.1 3.3A4.9 4.9 0 0 0 4 9.9c0 4.9 3 6 5.8 6.3a2.6 2.6 0 0 0-.8 1.9V22" />
+              <path d="M9 18c-3 .9-3.6-1.2-5-2" />
+            </svg>
+            <span>@akhmad</span>
+          </a>
+
+          <a class="icon-button" href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" />
+            </svg>
+            <span>@akhmad</span>
+          </a>
+        </nav>
+      </section>
+
+      <section class="photo-stack" aria-label="Akhmad Raymond photos">
+        <figure class="polaroid layer back-left">
+          <img src="Assets/Photo1.jpg" alt="" />
+        </figure>
+        <figure class="polaroid layer back-right">
+          <img src="Assets/Photo2.jpg" alt="" />
+        </figure>
+        <figure class="polaroid main-photo">
+          <img src="Assets/Photo3.jpg" alt="Akhmad Raymond standing on a beach" />
+        </figure>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
