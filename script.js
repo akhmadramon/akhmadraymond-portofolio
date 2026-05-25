@@ -34,10 +34,12 @@ typeRole();
 
 const workTabs = document.querySelectorAll("[data-work-tab]");
 const workPanels = document.querySelectorAll("[data-work-panel]");
+const workTabsShell = document.querySelector(".work-tabs");
 
 workTabs.forEach((tab) => {
   tab.addEventListener("click", () => {
     const target = tab.dataset.workTab;
+    workTabsShell?.classList.toggle("is-uiux", target === "uiux");
 
     workTabs.forEach((item) => {
       const isActive = item === tab;
