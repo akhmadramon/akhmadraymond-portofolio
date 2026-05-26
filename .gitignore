@@ -1,3 +1,5 @@
 desktop-preview*.png
 mobile-preview*.png
 mobile-*-preview.png
+node_modules/
+dist/

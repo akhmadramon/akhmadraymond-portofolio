@@ -40,10 +40,6 @@ body::-webkit-scrollbar,
   height: 0;
 }
 
-body.detail-open {
-  min-height: 100vh;
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -428,8 +424,10 @@ svg {
 .experience-card:hover,
 .experience-card:focus-within {
   transform: rotate(0deg) translateY(-4px);
-  border-color: rgba(24, 25, 27, 0.12);
-  box-shadow: 0 34px 80px rgba(24, 25, 27, 0.1);
+  border-color: rgba(24, 25, 27, 0.16);
+  box-shadow:
+    0 0 0 4px rgba(24, 25, 27, 0.045),
+    0 34px 82px rgba(24, 25, 27, 0.13);
 }
 
 .ios-bar {
@@ -671,6 +669,7 @@ svg {
   margin: 0;
   color: #111215;
   font-size: clamp(36px, 4vw, 54px);
+  font-weight: 800;
   line-height: 1.05;
   letter-spacing: 0;
 }
@@ -708,8 +707,9 @@ svg {
   background: #fff;
   box-shadow: 0 8px 18px rgba(24, 25, 27, 0.08);
   transform: translateX(0);
+  will-change: transform;
   transition:
-    transform 460ms var(--ease-soft),
+    transform 560ms cubic-bezier(0.2, 1.42, 0.34, 1),
     box-shadow 260ms ease;
 }
 
@@ -730,12 +730,16 @@ svg {
   font-size: 14px;
   font-weight: 800;
   cursor: default;
+  transition:
+    color 220ms ease,
+    transform 320ms cubic-bezier(0.2, 1.28, 0.34, 1);
 }
 
 .work-tab.active {
   color: #111827;
   background: transparent;
   box-shadow: none;
+  transform: translateY(-1px);
 }
 
 .work-list {
@@ -759,6 +763,19 @@ svg {
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.82);
   box-shadow: 0 20px 46px rgba(24, 25, 27, 0.045);
+  cursor: pointer;
+  transition:
+    border-color 360ms ease,
+    box-shadow 520ms var(--ease-soft);
+}
+
+.project-card:hover,
+.project-card:focus-visible {
+  border-color: rgba(24, 25, 27, 0.16);
+  box-shadow:
+    0 0 0 4px rgba(24, 25, 27, 0.045),
+    0 28px 72px rgba(24, 25, 27, 0.12);
+  outline: none;
 }
 
 .project-card-reverse {
@@ -805,6 +822,7 @@ svg {
   margin: 0;
   color: #161719;
   font-size: 23px;
+  font-weight: 800;
   line-height: 1.14;
   letter-spacing: 0;
 }
@@ -854,10 +872,14 @@ svg {
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  position: relative;
   color: #141517;
   text-decoration: none;
   font-size: 15px;
   font-weight: 900;
+  transition:
+    color 260ms ease,
+    transform 360ms var(--ease-soft);
 }
 
 .project-link svg {
@@ -868,6 +890,17 @@ svg {
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
+  transition: transform 360ms var(--ease-soft);
+}
+
+.project-card:hover .project-link,
+.project-card:focus-visible .project-link {
+  transform: translateX(2px);
+}
+
+.project-card:hover .project-link svg,
+.project-card:focus-visible .project-link svg {
+  transform: translateX(5px);
 }
 
 .project-link-short {
@@ -1060,10 +1093,6 @@ svg {
   height: 10px;
   background: #24292f;
   transform: translateX(-50%) rotate(45deg);
-}
-
-.contribution-tooltip[hidden] {
-  display: none;
 }
 
 .heatmap .level-1,
@@ -1524,14 +1553,6 @@ svg {
   transform: none;
 }
 
-body.detail-open > .hero,
-body.detail-open > .profile-section,
-body.detail-open > .work-section,
-body.detail-open > .activity-section,
-body.detail-open > .site-footer {
-  display: none;
-}
-
 .detail-back {
   position: fixed;
   top: 28px;
@@ -1598,6 +1619,8 @@ body.detail-open > .site-footer {
   aspect-ratio: 16 / 10;
   display: block;
   object-fit: cover;
+  outline: 1px solid rgba(24, 25, 27, 0.14);
+  outline-offset: -1px;
 }
 
 .detail-preview.phone-preview {
@@ -1614,6 +1637,7 @@ body.detail-open > .site-footer {
   margin: 0;
   color: #121316;
   font-size: clamp(40px, 4.5vw, 63px);
+  font-weight: 800;
   line-height: 0.95;
   letter-spacing: 0;
 }
@@ -1749,6 +1773,7 @@ body.detail-open > .site-footer {
   border-bottom: 1px solid rgba(24, 25, 27, 0.055);
   color: #000;
   font-size: 27px;
+  font-weight: 800;
   line-height: 1.1;
   letter-spacing: 0;
 }
@@ -1800,6 +1825,7 @@ body.detail-open > .site-footer {
   text-align: center;
   color: #050505;
   font-size: clamp(31px, 2.9vw, 41px);
+  font-weight: 800;
   line-height: 1.08;
   letter-spacing: 0;
 }
@@ -1993,6 +2019,7 @@ body.detail-open > .site-footer {
   margin: 0;
   color: #151619;
   font-size: clamp(34px, 3.4vw, 50px);
+  font-weight: 800;
   line-height: 1.05;
   letter-spacing: 0;
 }
@@ -2021,6 +2048,8 @@ body.detail-open > .site-footer {
   display: block;
   object-fit: contain;
   border: 1px solid rgba(24, 25, 27, 0.1);
+  outline: 1px solid rgba(24, 25, 27, 0.14);
+  outline-offset: -1px;
   border-radius: 22px;
   background: #fff;
 }
@@ -2068,6 +2097,8 @@ body.detail-open > .site-footer {
   width: min(100%, 230px);
   display: block;
   border: 1px solid rgba(24, 25, 27, 0.1);
+  outline: 1px solid rgba(24, 25, 27, 0.14);
+  outline-offset: -1px;
   border-radius: 26px;
   background: #fff;
   box-shadow: 0 24px 44px rgba(24, 25, 27, 0.08);
@@ -2664,6 +2695,11 @@ body.detail-open > .site-footer {
     padding: 12px;
   }
 
+  .detail-preview img {
+    outline-width: 2px;
+    outline-offset: -2px;
+  }
+
   .detail-preview.phone-preview {
     width: min(100%, 250px);
   }
@@ -2932,6 +2968,8 @@ body.detail-open > .site-footer {
   }
 
   .breakdown-media img {
+    outline-width: 2px;
+    outline-offset: -2px;
     border-radius: 20px;
   }
 
@@ -2968,6 +3006,8 @@ body.detail-open > .site-footer {
 
   .mobile-gallery img {
     width: min(100%, 260px);
+    outline-width: 2px;
+    outline-offset: -2px;
     border-radius: 22px;
   }
 
@@ -3436,6 +3476,13 @@ body.detail-open > .site-footer {
   .activity-sidebar a:focus-visible,
   .contact-actions a:hover,
   .contact-actions a:focus-visible {
+    transform: none;
+  }
+
+  .project-card:hover .project-link,
+  .project-card:focus-visible .project-link,
+  .project-card:hover .project-link svg,
+  .project-card:focus-visible .project-link svg {
     transform: none;
   }
 
