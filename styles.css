@@ -283,8 +283,17 @@ svg {
   stroke-linejoin: round;
 }
 
+.brand-icon {
+  width: 23px;
+  height: 23px;
+  flex: 0 0 auto;
+  display: block;
+  object-fit: contain;
+}
+
 .resume-button svg,
-.icon-button svg {
+.icon-button svg,
+.icon-button .brand-icon {
   position: absolute;
   top: 50%;
   display: block;
@@ -301,7 +310,8 @@ svg {
   left: 218px;
 }
 
-.icon-button svg {
+.icon-button svg,
+.icon-button .brand-icon {
   left: 16.5px;
 }
 
@@ -2327,7 +2337,8 @@ svg {
     left: 82px;
   }
 
-  .icon-button svg {
+  .icon-button svg,
+  .icon-button .brand-icon {
     left: 14px;
   }
 
@@ -2374,6 +2385,11 @@ svg {
   }
 
   svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .brand-icon {
     width: 20px;
     height: 20px;
   }
@@ -3216,7 +3232,8 @@ svg {
     padding: 0;
   }
 
-  .icon-button svg {
+  .icon-button svg,
+  .icon-button .brand-icon {
     left: 13.5px;
   }
 

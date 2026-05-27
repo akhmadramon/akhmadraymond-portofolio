@@ -74,7 +74,12 @@ export default function Hero() {
         </div>
 
         <nav className="social-actions" aria-label="Portfolio links">
-          <a className="resume-button" href="#" download>
+          <a
+            className="resume-button"
+            href="https://drive.google.com/file/d/1PII6BM6n7c7MmK6BFZ83Vh28aQBKXzAW/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span className="resume-label">Resume</span>
             <span className="resume-extra" aria-hidden="true">
               Download

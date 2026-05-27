@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { projects } from "../data/projects";
 import ProjectCard from "./ProjectCard";
 
@@ -7,9 +6,7 @@ const tabs = [
   { id: "uiux", label: "UI/UX Design" },
 ];
 
-export default function Projects({ onOpenProject }) {
-  const [activeTab, setActiveTab] = useState("web");
-
+export default function Projects({ activeTab, onChangeTab, onOpenProject }) {
   return (
     <section className="work-section" id="work" aria-labelledby="work-title">
       <div className="work-heading">
@@ -23,7 +20,7 @@ export default function Projects({ onOpenProject }) {
             className={`work-tab ${activeTab === tab.id ? "active" : ""}`}
             type="button"
             aria-pressed={activeTab === tab.id}
-            onClick={() => setActiveTab(tab.id)}
+            onClick={() => onChangeTab(tab.id)}
             key={tab.id}
           >
             {tab.label}

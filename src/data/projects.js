@@ -23,7 +23,7 @@ export const projects = [
     image: `${webBase}/akhmad-porto/akhmad-porto-displauy.png`,
     imageAlt: "Personal portfolio website preview",
     reverse: false,
-    tools: [toolIcons.html, toolIcons.css, toolIcons.javascript, toolIcons.figma],
+    tools: [toolIcons.react, toolIcons.vite, toolIcons.javascript, toolIcons.css],
     detail: {
       summary:
         "A polished portfolio website designed to introduce my profile, experience, skills, and selected work through a clean responsive interface.",
